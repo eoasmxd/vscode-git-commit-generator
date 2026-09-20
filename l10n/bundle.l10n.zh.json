@@ -1,0 +1,23 @@
+{
+  "Git Commit Generator extension activated": "Git Commit Generator 扩展已成功激活",
+  "No code changes detected in the current repository.": "未在当前仓库检测到任何代码变更",
+  "Missing model configuration (API URL or model name). Please configure the model service first.": "未检测到模型配置（缺少 API 地址或模型名称），请先配置模型服务",
+  "Open Settings": "打开设置",
+  "View Logs": "查看日志",
+  "Generating commit message...": "正在生成 Commit 信息...",
+  "Commit generation was aborted by user.": "用户已中止生成流程",
+  "Failed to generate commit message": "生成 Commit 信息失败",
+  "Failed to generate commit: {0}": "生成 Commit 失败：{0}",
+  "Unable to connect to the model service. Possible issues:\n1. Network disconnected or proxy error;\n2. Incorrect API URL;\n3. If using local services (like Ollama), ensure the service is running.": "无法连接到模型服务，可能的问题：\n1. 网络未连接或代理设置异常；\n2. API 地址填写错误；\n3. 若使用本地服务（如 Ollama），请确认服务已启动。",
+  "Authentication failed (HTTP 401): Invalid or missing API Key. Please check your settings.{0}": "身份认证失败 (HTTP 401)：API Key 无效或未提供，请检查配置{0}",
+  "Access denied (HTTP 403): Please check account permissions, balance, or region restrictions.{0}": "访问被拒绝 (HTTP 403)：请检查账户权限、余额或区域限制{0}",
+  "Endpoint not found (HTTP 404): Please verify the API URL and ensure the endpoint is supported.{0}": "接口地址不存在 (HTTP 404)：请检查 API 地址是否填写规范，以及端点是否支持{0}",
+  "Rate limit reached (HTTP 429): Too many requests or quota exhausted. Please try again later.{0}": "请求受限 (HTTP 429)：请求过于频繁或账户调用额度已耗尽，请稍后重试{0}",
+  "Model service unavailable (HTTP {0}): Provider might be experiencing issues or maintenance. Please try again later.": "模型服务端故障 (HTTP {0})：服务提供商可能正在维护或过载，请稍后重试",
+  "Model service returned HTTP {0}. Please check your model and service settings.{1}": "模型服务返回异常 (HTTP {0})，请检查模型与服务配置。{1}",
+  "Invalid response format from model service (non-JSON). Please verify your API URL.": "模型服务返回的数据格式异常（非标准 JSON），请检查 API 地址是否填写正确。",
+  "No valid commit message returned{0}. Possible issue: model name is incorrect or currently unavailable.": "未能获取到有效的 Commit 文本{0}，可能的问题：模型名称错误或当前模型不可用。",
+  "VS Code built-in Git extension not found. Please ensure Git is enabled.": "未找到 VS Code 内置 Git 扩展，请确认 Git 功能已开启",
+  "Unable to get VS Code Git extension API.": "无法获取 VS Code Git 扩展接口",
+  "No open Git repository detected in the current workspace.": "当前工作区未检测到打开的 Git 仓库"
+}

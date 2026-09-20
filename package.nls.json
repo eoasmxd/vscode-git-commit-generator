@@ -1,0 +1,10 @@
+{
+  "extension.description": "AI-powered Git commit message generator and polisher for VS Code.",
+  "command.generate": "Generate Commit Message",
+  "command.abort": "Stop Generating Commit Message",
+  "config.apiUrl": "Model service API base URL (compatible with OpenAI, DeepSeek, Ollama, OneAPI, etc.)",
+  "config.apiKey": "API Key for model authentication (leave empty for local services like Ollama)",
+  "config.model": "Model name to request (e.g., gpt-4o-mini, deepseek-v4-flash, qwen2.5-coder)",
+  "config.systemPrompt": "System prompt setting for the LLM",
+  "config.promptTemplate": "Prompt template supporting {diff} and {user_input} placeholders"
+}

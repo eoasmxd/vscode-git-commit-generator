@@ -1,0 +1,125 @@
+{
+  "name": "vscode-git-commit-generator",
+  "displayName": "Git Commit Generator",
+  "description": "%extension.description%",
+  "icon": "icon.png",
+  "version": "1.0.1",
+  "publisher": "eoasmxd",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eoasmxd/vscode-git-commit-generator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/eoasmxd/vscode-git-commit-generator/issues"
+  },
+  "homepage": "https://github.com/eoasmxd/vscode-git-commit-generator#readme",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "SCM Providers",
+    "Machine Learning"
+  ],
+  "keywords": [
+    "git",
+    "commit",
+    "generator",
+    "ai",
+    "llm",
+    "openai"
+  ],
+  "main": "./dist/extension.js",
+  "l10n": "./l10n",
+  "scripts": {
+    "vscode:prepublish": "node esbuild.js --production",
+    "compile": "node esbuild.js",
+    "watch": "node esbuild.js --watch",
+    "typecheck": "tsc --noEmit",
+    "clean": "node -e \"try { require('fs').rmSync('dist', {recursive:true,force:true}); require('fs').readdirSync('.').filter(f => f.endsWith('.vsix')).forEach(f => require('fs').unlinkSync(f)) } catch(e) {}\"",
+    "package": "npx @vscode/vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.4.0"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "gitCommitGen.generate",
+        "title": "%command.generate%",
+        "category": "Git Commit Generator",
+        "icon": "$(sparkle)"
+      },
+      {
+        "command": "gitCommitGen.abort",
+        "title": "%command.abort%",
+        "category": "Git Commit Generator",
+        "icon": "$(debug-stop)"
+      }
+    ],
+    "menus": {
+      "scm/title": [
+        {
+          "command": "gitCommitGen.generate",
+          "group": "navigation",
+          "when": "config.git.enabled && scmProvider == git && !gitCommitGen.isGenerating"
+        },
+        {
+          "command": "gitCommitGen.abort",
+          "group": "navigation",
+          "when": "config.git.enabled && scmProvider == git && gitCommitGen.isGenerating"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "gitCommitGen.generate",
+          "when": "config.git.enabled && !gitCommitGen.isGenerating"
+        },
+        {
+          "command": "gitCommitGen.abort",
+          "when": "config.git.enabled && gitCommitGen.isGenerating"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Git Commit Generator",
+      "properties": {
+        "gitCommitGen.apiUrl": {
+          "type": "string",
+          "default": "",
+          "description": "%config.apiUrl%",
+          "order": 1
+        },
+        "gitCommitGen.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "%config.apiKey%",
+          "order": 2
+        },
+        "gitCommitGen.model": {
+          "type": "string",
+          "default": "",
+          "description": "%config.model%",
+          "order": 3
+        },
+        "gitCommitGen.systemPrompt": {
+          "type": "string",
+          "editPresentation": "multilineText",
+          "default": "You are an expert Git commit generator. Based on the provided git diff, generate a clear and standardized commit message following the Conventional Commits specification.\n\nGuidelines:\n1. The first line must be a concise summary (e.g., feat: ..., fix: ...), ideally within 50-72 characters;\n2. If changes are complex, leave one blank line after the summary followed by bullet points detailing key changes;\n3. If specific user notes or instructions are provided, prioritize and strictly adhere to them;\n4. Do NOT wrap output in markdown code blocks (e.g. ```), and do NOT include conversational filler or explanations. Output the raw commit message only.",
+          "description": "%config.systemPrompt%",
+          "order": 4
+        },
+        "gitCommitGen.promptTemplate": {
+          "type": "string",
+          "editPresentation": "multilineText",
+          "default": "[Code Diff]:\n{diff}\n\n[User Notes or Instructions]:\n{user_input}",
+          "description": "%config.promptTemplate%",
+          "order": 5
+        }
+      }
+    }
+  }
+}
