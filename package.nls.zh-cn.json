@@ -1,5 +1,5 @@
 {
-  "extension.description": "基于大语言模型一键生成与润色 Git Commit 信息的 VS Code 扩展",
+  "extension.description": "基于大语言模型一键生成与润色 Git Commit 信息",
   "command.generate": "生成 Commit 信息",
   "command.abort": "停止生成 Commit 信息",
   "config.apiUrl": "模型服务 API 基础地址（支持 OpenAI、DeepSeek、Ollama、OneAPI 等兼容端点）",
