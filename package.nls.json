@@ -1,5 +1,5 @@
 {
-  "extension.description": "AI-powered Git commit message generator and polisher for VS Code.",
+  "extension.description": "AI-powered Git commit message generator and polisher.",
   "command.generate": "Generate Commit Message",
   "command.abort": "Stop Generating Commit Message",
   "config.apiUrl": "Model service API base URL (compatible with OpenAI, DeepSeek, Ollama, OneAPI, etc.)",
