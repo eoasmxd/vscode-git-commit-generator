@@ -3,7 +3,7 @@
   "displayName": "Git Commit Generator",
   "description": "%extension.description%",
   "icon": "icon.png",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publisher": "eoasmxd",
   "repository": {
     "type": "git",
