@@ -23,8 +23,9 @@ export async function getGitDiff(cwd: string): Promise<string> {
 
 async function getStagedDiff(cwd: string): Promise<string> {
   try {
-    const { stdout } = await execAsync("git --no-pager diff --staged --diff-filter=d", { cwd })
-    return stdout
+    const { stdout: nonDeleted } = await execAsync("git --no-pager diff --staged --diff-filter=d", { cwd })
+    const { stdout: deletedStat } = await execAsync("git --no-pager diff --staged --diff-filter=D --stat", { cwd })
+    return [nonDeleted.trim(), deletedStat.trim()].filter(Boolean).join("\n\n")
   } catch {
     return ""
   }
@@ -32,12 +33,14 @@ async function getStagedDiff(cwd: string): Promise<string> {
 
 async function getWorkingTreeDiff(cwd: string): Promise<string> {
   try {
-    const { stdout } = await execAsync("git --no-pager diff HEAD --diff-filter=d", { cwd })
-    return stdout
+    const { stdout: nonDeleted } = await execAsync("git --no-pager diff HEAD --diff-filter=d", { cwd })
+    const { stdout: deletedStat } = await execAsync("git --no-pager diff HEAD --diff-filter=D --stat", { cwd })
+    return [nonDeleted.trim(), deletedStat.trim()].filter(Boolean).join("\n\n")
   } catch {
     try {
-      const { stdout } = await execAsync("git --no-pager diff --diff-filter=d", { cwd })
-      return stdout
+      const { stdout: nonDeleted } = await execAsync("git --no-pager diff --diff-filter=d", { cwd })
+      const { stdout: deletedStat } = await execAsync("git --no-pager diff --diff-filter=D --stat", { cwd })
+      return [nonDeleted.trim(), deletedStat.trim()].filter(Boolean).join("\n\n")
     } catch {
       return ""
     }
